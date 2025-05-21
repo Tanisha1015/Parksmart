@@ -1,0 +1,54 @@
+name: park_smart
+description: A smart parking app that helps users find, reserve, and pay for parking spots.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Firebase
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.7.3
+  cloud_firestore: ^4.8.5
+  firebase_database: ^10.2.5
+  
+  # Authentication
+  google_sign_in: ^6.3.0
+  
+  # Location
+  geolocator: ^10.0.0
+  geocoding: ^2.1.0
+  
+  # Maps
+  google_maps_flutter: ^2.4.0
+  flutter_polyline_points: ^2.0.0
+  
+  # State Management
+  provider: ^6.0.5
+  
+  # UI
+  cupertino_icons: ^1.0.5
+  flutter_svg: ^2.0.7
+  
+  # Payments
+  razorpay_flutter: ^1.4.0
+  
+  # Utilities
+  intl: ^0.18.1
+  uuid: ^3.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.2
+
+# flutter:
+#   uses-material-design: true
+#   assets:
+#     - assets/images/
