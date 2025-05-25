@@ -1,13 +1,11 @@
-// lib/screens/parking_lot_details_screen.dart
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:park_smart/models/parking_spot.dart';
 import 'package:park_smart/providers/auth_provider.dart';
 import 'package:park_smart/providers/location_provider.dart';
 import 'package:park_smart/providers/parking_provider.dart';
-import 'package:park_smart/screens/navigation_screen.dart';
-import 'package:park_smart/screens/reservation_confirmation_screen.dart';
+import 'reservation_confirmation_screen.dart';
+import 'navigation_screen.dart';
 
 class ParkingLotDetailsScreen extends StatefulWidget {
   const ParkingLotDetailsScreen({super.key});
@@ -24,9 +22,9 @@ class _ParkingLotDetailsScreenState extends State<ParkingLotDetailsScreen> {
     final parkingProvider = Provider.of<ParkingProvider>(context);
     final locationProvider = Provider.of<LocationProvider>(context);
     final authProvider = Provider.of<AuthProvider>(context);
-    
+
     final parkingLot = parkingProvider.selectedParkingLot;
-    
+
     if (parkingLot == null) {
       return const Scaffold(
         body: Center(
@@ -34,10 +32,9 @@ class _ParkingLotDetailsScreenState extends State<ParkingLotDetailsScreen> {
         ),
       );
     }
-    
-    // Get available spots
+
     final availableSpots = parkingLot.spots.where((spot) => spot.isAvailable).toList();
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text(parkingLot.name),
@@ -68,8 +65,6 @@ class _ParkingLotDetailsScreenState extends State<ParkingLotDetailsScreen> {
                 zoomControlsEnabled: false,
               ),
             ),
-            
-            // Parking lot information
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -102,54 +97,41 @@ class _ParkingLotDetailsScreenState extends State<ParkingLotDetailsScreen> {
                         Icons.directions_car,
                         locationProvider.currentPosition != null
                             ? '${(locationProvider.calculateDistance(
-                                locationProvider.currentLatLng,
-                                LatLng(parkingLot.latitude, parkingLot.longitude),
-                              ) / 1000).toStringAsFixed(1)} km'
+                          locationProvider.currentLatLng,
+                          LatLng(parkingLot.latitude, parkingLot.longitude),
+                        ) / 1000).toStringAsFixed(1)} km'
                             : 'N/A',
                         'Distance',
                       ),
                     ],
                   ),
-                  
                   const SizedBox(height: 24),
-                  
-                  // Spot selection
                   Text(
                     'Select Parking Spot',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  
                   const SizedBox(height: 8),
-                  
-                  // Auto-assign toggle
                   SwitchListTile(
                     title: const Text('Auto-assign nearest available spot'),
                     value: _autoAssignSpot,
                     onChanged: (value) {
                       setState(() {
                         _autoAssignSpot = value;
-                        
-                        // If turning on auto-assign, find the nearest spot
                         if (_autoAssignSpot && locationProvider.currentPosition != null) {
                           final nearestSpot = parkingProvider.findNearestAvailableSpot(
                             locationProvider.currentLatLng,
                           );
-                          
                           if (nearestSpot != null) {
                             parkingProvider.selectParkingSpot(nearestSpot);
                           }
                         } else {
-                          // Clear selected spot when turning off auto-assign
                           parkingProvider.selectParkingSpot(null);
                         }
                       });
                     },
                   ),
-                  
                   if (!_autoAssignSpot) ...[
                     const SizedBox(height: 16),
-                    
-                    // Manual spot selection
                     if (availableSpots.isEmpty)
                       const Padding(
                         padding: EdgeInsets.symmetric(vertical: 16.0),
@@ -171,7 +153,6 @@ class _ParkingLotDetailsScreenState extends State<ParkingLotDetailsScreen> {
                         itemBuilder: (context, index) {
                           final spot = availableSpots[index];
                           final isSelected = parkingProvider.selectedParkingSpot?.id == spot.id;
-                          
                           return GestureDetector(
                             onTap: () {
                               parkingProvider.selectParkingSpot(spot);
@@ -194,10 +175,7 @@ class _ParkingLotDetailsScreenState extends State<ParkingLotDetailsScreen> {
                         },
                       ),
                   ],
-                  
                   const SizedBox(height: 24),
-                  
-                  // Navigation and reservation buttons
                   Row(
                     children: [
                       Expanded(
@@ -224,40 +202,35 @@ class _ParkingLotDetailsScreenState extends State<ParkingLotDetailsScreen> {
                       const SizedBox(width: 16),
                       Expanded(
                         child: ElevatedButton.icon(
-                          onPressed: (parkingProvider.selectedParkingSpot != null || 
-                                     (_autoAssignSpot && availableSpots.isNotEmpty))
+                          onPressed: (parkingProvider.selectedParkingSpot != null ||
+                              (_autoAssignSpot && availableSpots.isNotEmpty))
                               ? () async {
-                                  // If auto-assign is on and no spot is selected yet
-                                  if (_autoAssignSpot && parkingProvider.selectedParkingSpot == null) {
-                                    final nearestSpot = parkingProvider.findNearestAvailableSpot(
-                                      locationProvider.currentLatLng,
-                                    );
-                                    
-                                    if (nearestSpot != null) {
-                                      parkingProvider.selectParkingSpot(nearestSpot);
-                                    } else {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(content: Text('No available spots found')),
-                                      );
-                                      return;
-                                    }
-                                  }
-                                  
-                                  // Create reservation
-                                  final reservation = await parkingProvider.reserveParkingSpot(
-                                    authProvider.user!.uid,
-                                  );
-                                  
-                                  if (reservation != null && context.mounted) {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) => ReservationConfirmationScreen(
-                                          reservation: reservation,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                }
+                            if (_autoAssignSpot && parkingProvider.selectedParkingSpot == null) {
+                              final nearestSpot = parkingProvider.findNearestAvailableSpot(
+                                locationProvider.currentLatLng,
+                              );
+                              if (nearestSpot != null) {
+                                parkingProvider.selectParkingSpot(nearestSpot);
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('No available spots found')),
+                                );
+                                return;
+                              }
+                            }
+                            final reservation = await parkingProvider.reserveParkingSpot(
+                              authProvider.user!.uid,
+                            );
+                            if (reservation != null && context.mounted) {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => ReservationConfirmationScreen(
+                                    reservation: reservation,
+                                  ),
+                                ),
+                              );
+                            }
+                          }
                               : null,
                           icon: const Icon(Icons.check_circle),
                           label: const Text('Reserve Spot'),
@@ -277,7 +250,7 @@ class _ParkingLotDetailsScreenState extends State<ParkingLotDetailsScreen> {
       ),
     );
   }
-  
+
   Widget _infoItem(IconData icon, String value, String label) {
     return Column(
       children: [

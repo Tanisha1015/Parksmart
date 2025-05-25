@@ -1,4 +1,3 @@
-// lib/screens/splash_screen.dart
 import 'package:flutter/material.dart';
 import 'package:park_smart/screens/auth_screen.dart';
 import 'package:park_smart/screens/home_screen.dart';
@@ -18,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     // Check if user is already signed in after a short delay
     Future.delayed(const Duration(seconds: 2), () {
+      if (!mounted) return;
       final authProvider = Provider.of<AuthProvider>(context, listen: false);
       if (authProvider.isAuthenticated) {
         Navigator.of(context).pushReplacement(
@@ -42,17 +42,17 @@ class _SplashScreenState extends State<SplashScreen> {
             colors: [Colors.blue.shade300, Colors.blue.shade800],
           ),
         ),
-        child: Center(
+        child: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(
+              Icon(
                 Icons.local_parking,
                 size: 100,
                 color: Colors.white,
               ),
-              const SizedBox(height: 20),
-              const Text(
+              SizedBox(height: 20),
+              Text(
                 'Park Smart',
                 style: TextStyle(
                   fontSize: 36,
@@ -60,13 +60,13 @@ class _SplashScreenState extends State<SplashScreen> {
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(height: 10),
-              const Text(
+              SizedBox(height: 10),
+              Text(
                 'Find parking spaces with ease',
                 style: TextStyle(fontSize: 18, color: Colors.white),
               ),
-              const SizedBox(height: 40),
-              const CircularProgressIndicator(
+              SizedBox(height: 40),
+              CircularProgressIndicator(
                 valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
               ),
             ],

@@ -1,5 +1,5 @@
 // lib/providers/location_provider.dart
-import 'dart:math' show cos, sqrt, asin, sin, pi, atan2;
+import 'dart:math' show cos, sqrt, sin, pi, atan2;
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

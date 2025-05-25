@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.parksmart"
+    namespace = "com.android.parksmart"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 

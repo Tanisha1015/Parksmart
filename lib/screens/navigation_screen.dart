@@ -1,4 +1,3 @@
-// lib/screens/navigation_screen.dart
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -18,14 +17,14 @@ class NavigationScreen extends StatefulWidget {
 }
 
 class _NavigationScreenState extends State<NavigationScreen> {
-  GoogleMapController? _mapController;
+  // Removed: GoogleMapController? _mapController; (unused)
   Set<Polyline> _polylines = {};
   Set<Marker> _markers = {};
   bool _isLoading = false;
   String _errorMessage = '';
-  
-  // Replace with your own Google Maps API Key
-  final String _googleApiKey = '';
+
+  // Use this field in your API calls
+  final String _googleApiKey = 'AIzaSyDjPiKQksLHkLmjf3lzysORF6eS6YirtFY';
 
   @override
   void initState() {
@@ -38,10 +37,10 @@ class _NavigationScreenState extends State<NavigationScreen> {
       _isLoading = true;
       _errorMessage = '';
     });
-    
+
     try {
       final locationProvider = Provider.of<LocationProvider>(context, listen: false);
-      
+
       if (locationProvider.currentPosition == null) {
         setState(() {
           _isLoading = false;
@@ -49,37 +48,37 @@ class _NavigationScreenState extends State<NavigationScreen> {
         });
         return;
       }
-      
+
       final origin = LatLng(
         locationProvider.currentPosition!.latitude,
         locationProvider.currentPosition!.longitude,
       );
-      
+
       final destination = widget.destinationLatLng;
-      
-      // Get directions
+
       PolylinePoints polylinePoints = PolylinePoints();
+
       PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-        _googleApiKey,
-        PointLatLng(origin.latitude, origin.longitude),
-        PointLatLng(destination.latitude, destination.longitude),
-        travelMode: TravelMode.driving,
+        googleApiKey: _googleApiKey, // Use the field here
+        request: PolylineRequest(
+          origin: PointLatLng(origin.latitude, origin.longitude),
+          destination: PointLatLng(destination.latitude, destination.longitude),
+          mode: TravelMode.driving,
+        ),
       );
-      
+
       if (result.points.isNotEmpty) {
-        List<LatLng> polylineCoordinates = [];
-        
-        for (var point in result.points) {
-          polylineCoordinates.add(LatLng(point.latitude, point.longitude));
-        }
-        
+        List<LatLng> polylineCoordinates = result.points
+            .map((point) => LatLng(point.latitude, point.longitude))
+            .toList();
+
         Polyline polyline = Polyline(
           polylineId: const PolylineId('route'),
           color: Colors.blue,
-          points: polylineCoordinates,
           width: 5,
+          points: polylineCoordinates,
         );
-        
+
         setState(() {
           _polylines = {polyline};
         });
@@ -88,8 +87,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
           _errorMessage = 'Unable to find a route';
         });
       }
-      
-      // Set markers
+
       setState(() {
         _markers = {
           Marker(
@@ -117,7 +115,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   @override
   Widget build(BuildContext context) {
     final locationProvider = Provider.of<LocationProvider>(context);
-    
+
     if (locationProvider.currentPosition == null) {
       return Scaffold(
         appBar: AppBar(
@@ -128,12 +126,12 @@ class _NavigationScreenState extends State<NavigationScreen> {
         ),
       );
     }
-    
+
     final origin = LatLng(
       locationProvider.currentPosition!.latitude,
       locationProvider.currentPosition!.longitude,
     );
-    
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Navigation'),
@@ -150,20 +148,27 @@ class _NavigationScreenState extends State<NavigationScreen> {
             markers: _markers,
             polylines: _polylines,
             onMapCreated: (controller) {
-              _mapController = controller;
-              
-              // Zoom to show both markers
+              // Removed usage of _mapController since it's not used elsewhere
+
               LatLngBounds bounds = LatLngBounds(
                 southwest: LatLng(
-                  min(origin.latitude, widget.destinationLatLng.latitude),
-                  min(origin.longitude, widget.destinationLatLng.longitude),
+                  origin.latitude < widget.destinationLatLng.latitude
+                      ? origin.latitude
+                      : widget.destinationLatLng.latitude,
+                  origin.longitude < widget.destinationLatLng.longitude
+                      ? origin.longitude
+                      : widget.destinationLatLng.longitude,
                 ),
                 northeast: LatLng(
-                  max(origin.latitude, widget.destinationLatLng.latitude),
-                  max(origin.longitude, widget.destinationLatLng.longitude),
+                  origin.latitude > widget.destinationLatLng.latitude
+                      ? origin.latitude
+                      : widget.destinationLatLng.latitude,
+                  origin.longitude > widget.destinationLatLng.longitude
+                      ? origin.longitude
+                      : widget.destinationLatLng.longitude,
                 ),
               );
-              
+
               controller.animateCamera(CameraUpdate.newLatLngBounds(bounds, 100));
             },
           ),
