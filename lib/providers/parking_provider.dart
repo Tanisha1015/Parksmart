@@ -83,8 +83,8 @@ class ParkingProvider with ChangeNotifier {
   // Find nearby parking lots within a radius
   List<ParkingLot> findNearbyParkingLots(LatLng userLocation, double radiusInMeters) {
     return _parkingLots.where((lot) {
-      final lotLocation = LatLng(lot.latitude, lot.longitude);
-      final distance = _calculateDistance(userLocation, lotLocation);
+     final lotLocation = LatLng(lot.latitude, lot.longitude);
+     final distance = _calculateDistance(userLocation, lotLocation);
       return distance <= radiusInMeters;
     }).toList();
   }

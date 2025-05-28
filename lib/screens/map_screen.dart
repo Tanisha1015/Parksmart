@@ -26,51 +26,61 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   void _updateMarkers() {
-    final locationProvider = Provider.of<LocationProvider>(context);
-    final parkingProvider = Provider.of<ParkingProvider>(context);
-    
-    if (locationProvider.currentPosition == null) {
-      return;
-    }
-    
-    final userLocation = LatLng(
-      locationProvider.currentPosition!.latitude,
-      locationProvider.currentPosition!.longitude,
-    );
-    
-    // Find nearby parking lots
-    final nearbyParkingLots = parkingProvider.findNearbyParkingLots(userLocation, _searchRadius);
-    
-    // Create markers for each parking lot
-    setState(() {
-      _markers = {
-        Marker(
-          markerId: const MarkerId('user_location'),
-          position: userLocation,
-          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure),
-          infoWindow: const InfoWindow(
-            title: 'Your Location',
-          ),
+  final locationProvider = Provider.of<LocationProvider>(context);
+  final parkingProvider = Provider.of<ParkingProvider>(context);
+
+  if (locationProvider.currentPosition == null) {
+    return;
+  }
+
+  final userLocation = LatLng(
+    locationProvider.currentPosition!.latitude,
+    locationProvider.currentPosition!.longitude,
+  );
+
+  // Find nearby parking lots
+  final nearbyParkingLots = parkingProvider.findNearbyParkingLots(userLocation, _searchRadius);
+
+  // Create markers for each parking lot
+  setState(() {
+    _markers = {
+      Marker(
+        markerId: const MarkerId('user_location'),
+        position: userLocation,
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure),
+        infoWindow: const InfoWindow(
+          title: 'Your Location',
         ),
-      };
-      
-      // Add markers for parking lots
-      for (final lot in nearbyParkingLots) {
-        _markers.add(
-          Marker(
-            markerId: MarkerId('lot_${lot.id}'),
-            position: LatLng(lot.latitude, lot.longitude),
-            infoWindow: InfoWindow(
-              title: lot.name,
-              snippet: '${lot.availableSpots} spots available',
-              onTap: () => _onMarkerTapped(lot),
-            ),
+      ),
+      // --- HARDCODED MARKER FOR TESTING ---
+      Marker(
+        markerId: const MarkerId('hardcoded_test_marker'),
+        position: const LatLng(22.7838587, 75.2606084), // Use any coordinates you like
+        infoWindow: const InfoWindow(
+          title: 'Test Marker',
+          snippet: 'available',
+        ),
+      ),
+    };
+
+    // Add markers for parking lots from Firebase
+    for (final lot in nearbyParkingLots) {
+      _markers.add(
+        Marker(
+          markerId: MarkerId('lot_${lot.id}'),
+          position: LatLng(lot.latitude, lot.longitude),
+          infoWindow: InfoWindow(
+            title: lot.name,
+            snippet: '${lot.availableSpots} spots available',
             onTap: () => _onMarkerTapped(lot),
           ),
-        );
-      }
-    });
-  }
+          onTap: () => _onMarkerTapped(lot),
+        ),
+      );
+    }
+  });
+}
+
 
   void _onMarkerTapped(ParkingLot parkingLot) {
     final parkingProvider = Provider.of<ParkingProvider>(context, listen: false);

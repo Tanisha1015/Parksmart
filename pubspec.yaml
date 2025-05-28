@@ -13,17 +13,17 @@ dependencies:
     sdk: flutter
   
   # Firebase
-  firebase_core: ^2.15.1
-  firebase_auth: ^4.7.3
-  cloud_firestore: ^4.8.5
-  firebase_database: ^10.2.5
+  firebase_core: ^3.13.1
+  firebase_auth: ^5.5.4
+  cloud_firestore: ^5.6.8
+  firebase_database: ^11.3.6
   
   # Authentication
   google_sign_in: ^6.3.0
   
   # Location
-  geolocator: ^10.0.0
-  geocoding: ^2.1.0
+  geolocator: 14.0.0
+  geocoding: ^3.0.0
   
   # Maps
   google_maps_flutter: ^2.4.0
@@ -40,13 +40,13 @@ dependencies:
   razorpay_flutter: ^1.4.0
   
   # Utilities
-  intl: ^0.18.1
-  uuid: ^3.0.7
+  intl: ^0.20.2
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.2
+  flutter_lints: ^5.0.0
 
 # flutter:
 #   uses-material-design: true

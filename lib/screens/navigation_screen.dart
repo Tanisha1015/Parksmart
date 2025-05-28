@@ -24,7 +24,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   String _errorMessage = '';
 
   // Use this field in your API calls
-  final String _googleApiKey = 'AIzaSyDjPiKQksLHkLmjf3lzysORF6eS6YirtFY';
+  final String _googleApiKey = 'your_api_key';
 
   @override
   void initState() {
