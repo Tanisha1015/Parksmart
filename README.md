@@ -17,8 +17,8 @@ What is Parksmart?
   
   View live information about available parking lots and individual parking spots. The app updates availability in real time as spots are reserved or freed.
 
-  <img src="https://github.com/user-attachments/assets/5ddd5eaa-f379-4b22-84a3-923eda04ab31)" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
-  
+  <img src="https://github.com/user-attachments/assets/306c5d8f-e6d9-4248-9fb0-132c060094ab" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
+
   
 - Interactive Google Map with Markers
   
