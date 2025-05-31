@@ -10,21 +10,22 @@ What is Parksmart?
   
   Securely log in to the app using your Google account. This ensures a personalized experience and allows you to track your parking history and reservations.
   
-  <img src="https://github.com/user-attachments/assets/5bad9261-5fc3-4b93-99c0-4d17c57ff63b" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
+  <img src="https://github.com/user-attachments/assets/d412bea4-d7c3-4faa-affd-b26acfc98453" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
 
   
 - Real-time Parking Spot Availability
   
   View live information about available parking lots and individual parking spots. The app updates availability in real time as spots are reserved or freed.
 
-  <img src="https://github.com/user-attachments/assets/8d23fca5-81e7-4332-8668-36794e5b2fdd" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
-
+  <img src="https://github.com/user-attachments/assets/5ddd5eaa-f379-4b22-84a3-923eda04ab31)" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
+  
   
 - Interactive Google Map with Markers
   
   See all nearby parking lots displayed as markers on an interactive Google Map. Tap markers to view lot details, spot availability, and pricing.
 
   <img src="https://github.com/user-attachments/assets/2a6eefed-0897-4cfc-aec7-9843a44ad993" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
+  
   
 - Automatic or Manual Parking Spot Selection
   
@@ -42,7 +43,7 @@ What is Parksmart?
   
   View a complete history of your past parking reservations, including lot names, spot numbers, reservation times, and prices.
 
-  <img src="https://github.com/user-attachments/assets/ce3ea176-4865-42dc-bf1b-674c008290bb" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
+  <img src="https://github.com/user-attachments/assets/129bc770-c394-4e89-9776-4879cc61c567" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
 
   
 
