@@ -11,6 +11,7 @@ What is Parksmart?
   Securely log in to the app using your Google account. This ensures a personalized experience and allows you to track your parking history and reservations.
   
   ![Screenshot_2025-05-31-13-56-22-318_com android parksmart](https://github.com/user-attachments/assets/5bad9261-5fc3-4b93-99c0-4d17c57ff63b)
+  <img src="https://github.com/user-attachments/assets/5bad9261-5fc3-4b93-99c0-4d17c57ff63b" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
 
   
 - Real-time Parking Spot Availability
