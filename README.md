@@ -1,16 +1,43 @@
 # parksmart
 
-A new Flutter project.
+What is Parksmart?
+**Park Smart** is a Flutter-based Android app that helps users find, reserve, and navigate to available parking spots in real time using Google Maps and Firebase.
+
+## Features
+
+- Google Sign-In Authentication
+- Real-time Parking Spot Availability
+- Interactive Google Map with Markers
+- Automatic or Manual Parking Spot Selection
+- In-app Navigation to Reserved Spot
+- Reservation History
+
+###Tech Stack Used-
+
+- [Flutter SDK](https://flutter.dev/docs/get-started/install)
+- [Firebase Project](https://console.firebase.google.com/)
+- [Google Cloud Platform Project](https://console.cloud.google.com/)
+- [Android Studio](https://developer.android.com/studio) or [VS Code](https://code.visualstudio.com/)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Clone the Repository
 
-A few resources to get you started if this is your first Flutter project:
+First, clone this repository to your local machine using Git:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Install Dependencies
+
+Install all Flutter dependencies:
+
+
+### Set Up Firebase and API Keys
+
+- Add your `google-services.json` file to `android/app/`.
+- Add your Google Maps API key to `android/app/src/main/AndroidManifest.xml` as described above.
+
+### Run the App
+
+Connect your Android device or start an emulator, then run:
+
+undefined
