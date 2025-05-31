@@ -10,29 +10,43 @@ What is Parksmart?
   
   Securely log in to the app using your Google account. This ensures a personalized experience and allows you to track your parking history and reservations.
   
+  ![Screenshot_2025-05-31-13-56-22-318_com android parksmart](https://github.com/user-attachments/assets/5bad9261-5fc3-4b93-99c0-4d17c57ff63b)
+
+  
 - Real-time Parking Spot Availability
   
   View live information about available parking lots and individual parking spots. The app updates availability in real time as spots are reserved or freed.
+
+  ![Screenshot_2025-05-31-13-58-04-046_com whatsapp](https://github.com/user-attachments/assets/8d23fca5-81e7-4332-8668-36794e5b2fdd)
+
   
 - Interactive Google Map with Markers
   
   See all nearby parking lots displayed as markers on an interactive Google Map. Tap markers to view lot details, spot availability, and pricing.
+
+  ![Screenshot_2025-05-31-13-58-17-948_com whatsapp](https://github.com/user-attachments/assets/2a6eefed-0897-4cfc-aec7-9843a44ad993)
+
   
 - Automatic or Manual Parking Spot Selection
   
   Choose to have the app automatically assign you the nearest available spot, or manually select your preferred spot from a list or grid.
+
+  ![Screenshot_2025-05-31-13-58-04-046_com whatsapp](https://github.com/user-attachments/assets/90b2d032-f1d3-46ae-b54c-1bd3eb125f20)
+
   
 - In-app Navigation to Reserved Spot
   
   Get turn-by-turn navigation from your current location to your reserved parking spot directly within the app, using Google Maps routing.
+
+  ![Screenshot_2025-05-31-13-58-17-948_com whatsapp](https://github.com/user-attachments/assets/e2a8a97c-0df4-49fb-a673-10b32082561f)
   
 - Reservation History
   
   View a complete history of your past parking reservations, including lot names, spot numbers, reservation times, and prices.
+
+  ![Screenshot_2025-05-31-13-58-07-503_com whatsapp](https://github.com/user-attachments/assets/ce3ea176-4865-42dc-bf1b-674c008290bb)
+
   
-- (Optional) Payment Integration
-  
-  Support for integrating payment gateways to handle parking fees securely within the app (implementation optional and customizable).
 
 ## Tech Stack Used-
 
