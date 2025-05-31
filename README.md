@@ -24,8 +24,8 @@ What is Parksmart?
   
   See all nearby parking lots displayed as markers on an interactive Google Map. Tap markers to view lot details, spot availability, and pricing.
 
-  <img src="https://github.com/user-attachments/assets/2a6eefed-0897-4cfc-aec7-9843a44ad993" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
-  
+  <img src="https://github.com/user-attachments/assets/fb0765df-a622-473a-8e3c-f4b90905c50e" width="300" alt="Screenshot_2025-05-31-13-56-22-318_com android parksmart" />
+
   
 - Automatic or Manual Parking Spot Selection
   
