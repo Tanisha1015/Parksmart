@@ -12,7 +12,7 @@ What is Parksmart?
 - In-app Navigation to Reserved Spot
 - Reservation History
 
-###Tech Stack Used-
+## Tech Stack Used-
 
 - [Flutter SDK](https://flutter.dev/docs/get-started/install)
 - [Firebase Project](https://console.firebase.google.com/)
