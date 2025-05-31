@@ -1,6 +1,7 @@
 # Parksmart
 
 What is Parksmart?
+
 **Park Smart** is a Flutter-based Android app that helps users find, reserve, and navigate to available parking spots in real time using Google Maps and Firebase.
 
 ## Features
