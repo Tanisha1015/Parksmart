@@ -95,7 +95,7 @@ flutter pub get
 
 ### 3️⃣Firebase Setup:
 
-- Place **google-services.json** in **android/app/**
+- Place `google-services.json` in `android/app/`
 
 ### 4️⃣Generate Firebase config:
 
@@ -106,7 +106,7 @@ flutterfire configure
 
 ### 5️⃣Google Maps API Key Setup (Android)
 
-- **android/app/src/main/AndroidManifest.xml:**
+- `android/app/src/main/AndroidManifest.xml:`
 
 ```
 <meta-data
