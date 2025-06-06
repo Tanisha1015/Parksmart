@@ -78,7 +78,7 @@ Built with Flutter, Firebase, and Google Maps, Park Smart is designed for reliab
 
 ## 🚀Getting Started
 
-### 1️⃣Clone the Repository
+#### 1️⃣Clone the Repository
 
 
 ```
@@ -87,24 +87,24 @@ cd parksmart
 ```
 
 
-### 2️⃣Install Dependencies
+#### 2️⃣Install Dependencies
 
 ```
 flutter pub get
 ```
 
-### 3️⃣Firebase Setup:
+#### 3️⃣Firebase Setup:
 
 - Place `google-services.json` in `android/app/`
 
-### 4️⃣Generate Firebase config:
+#### 4️⃣Generate Firebase config:
 
 ```
 dart pub global activate flutterfire_cli
 flutterfire configure
 ```
 
-### 5️⃣Google Maps API Key Setup (Android)
+#### 5️⃣Google Maps API Key Setup (Android)
 
 - `android/app/src/main/AndroidManifest.xml:`
 
@@ -114,7 +114,7 @@ flutterfire configure
     android:value="YOUR_API_KEY"/>
 ```
 
-### 6️⃣Run the App
+#### 6️⃣Run the App
 
 ```
 flutter run
