@@ -1,4 +1,4 @@
-# Parksmart
+ # 🚗Parksmart
 
 What is Parksmart?
 
@@ -58,27 +58,76 @@ What is Parksmart?
 - [Flutter SDK](https://flutter.dev/docs/get-started/install)
 - [Firebase Project](https://console.firebase.google.com/)
 - [Google Cloud Platform Project](https://console.cloud.google.com/)
-- [Android Studio](https://developer.android.com/studio) or [VS Code](https://code.visualstudio.com/)
+- [Android Studio](https://developer.android.com/studio)
 
 ## Getting Started
 
 ### Clone the Repository
 
-First, clone this repository to your local machine using Git:
+
+```
+git clone https://github.com/Tanisha1015/parksmart.git
+cd parksmart
+```
 
 
 ### Install Dependencies
 
-Install all Flutter dependencies:
+```
+flutter pub get
+```
 
+### Firebase Setup:
 
-### Set Up Firebase and API Keys
+- Place **google-services.json** in **android/app/**
 
-- Add your `google-services.json` file to `android/app/`.
-- Add your Google Maps API key to `android/app/src/main/AndroidManifest.xml` as described above.
+### Generate Firebase config:
+
+```
+dart pub global activate flutterfire_cli
+flutterfire configure
+```
+
+### Google Maps API Key Setup (Android)
+
+- **android/app/src/main/AndroidManifest.xml:**
+
+```
+<meta-data
+    android:name="com.google.android.geo.API_KEY"
+    android:value="YOUR_API_KEY"/>
+```
 
 ### Run the App
 
-Connect your Android device or start an emulator, then run:
+```
+flutter run
+```
 
-undefined
+### Project Structure:
+
+```
+lib/
+  main.dart
+  models/
+    parking_lot.dart
+    parking_spot.dart
+    reservation.dart
+  providers/
+    auth_provider.dart
+    location_provider.dart
+    parking_provider.dart
+  screens/
+    splash_screen.dart
+    auth_screen.dart
+    home_screen.dart
+    map_screen.dart
+    parking_lot_details_screen.dart
+    reservation_confirmation_screen.dart
+    navigation_screen.dart
+    history_screen.dart
+    profile_screen.dart
+firebase_options.dart
+```
+
+## Happy Parking! 🚗
